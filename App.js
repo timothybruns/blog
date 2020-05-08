@@ -1,16 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import IndexScreen from './src/screens/IndexScreen';
+import { BlogProvider } from './src/context/BlogContext';
 
-const IndexScreen = () => {
-  return (
-    <View>
-      <Text>Index Screen</Text>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-
+const navigator = createStackNavigator(
+{
+    Index: IndexScreen
+}, 
+{
+    initialRouteName: 'Index',
+    defaultNavigationOptions: {
+        title: 'Blogs'
+    }
 });
 
-export default IndexScreen;
+const App = createAppContainer(navigator);
+
+export default () => {
+  return <BlogProvider>
+      <App />
+    </BlogProvider>
+}

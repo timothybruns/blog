@@ -1,16 +1,20 @@
-import { createStackNavigator, createStackNavigator, createAppContainer } from 'react-navigation';
-import IndexScreen from './src/screens/IndexScreen';
-import { FadeFromBottomAndroid } from 'react-navigation-stack/lib/typescript/src/vendor/TransitionConfigs/TransitionPresets';
+import React, { useContext } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import BlogContext from '../context/BlogContext';
 
-const navigator = createStackNavigator(
-{
-    Index: IndexScreen
-}, 
-{
-    initialRouteName: 'Index',
-    defaultNavigationOptions: {
-        title: 'Blogs'
-    }
+const IndexScreen = () => {
+    const value = useContext(BlogContext);
+  
+    return (
+    <View>
+      <Text>Index Screen</Text>
+      <Text>{value}</Text>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+
 });
 
-export default createAppContainer(navigator);
+export default IndexScreen;
